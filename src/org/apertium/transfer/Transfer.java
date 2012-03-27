@@ -18,7 +18,6 @@ import org.apertium.lttoolbox.Pair;
 import org.apertium.lttoolbox.process.FSTProcessor;
 import org.apertium.transfer.development.Timing;
 import org.apertium.transfer.generated.GeneratedTransferBase;
-import org.apertium.transfer.generated.apertium_eo_en_en_eo_t1x;
 
 
 

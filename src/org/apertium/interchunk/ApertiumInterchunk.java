@@ -133,7 +133,6 @@ public class ApertiumInterchunk {
      * @param par
      * @throws Exception 
      */
-    @SuppressWarnings("unchecked")
     public static void doMain(CommandLineParams par, Interchunk i) 
             throws Exception {
 
@@ -141,9 +140,8 @@ public class ApertiumInterchunk {
 
         File txFile = openFile(par.t2xFile);
         File binFile = openFile(par.preprocFile); 
-        Class t2xClass = null;//TransferClassLoader.loadTxClass(txFile, binFile);
+        Class<?> t2xClass = null;//TransferClassLoader.loadTxClass(txFile, binFile);
 
-        Log.e("t2xname---", txFile.getName());
         if(txFile.getName().contains("eo-en.antaux_t2x")){
         	t2xClass = apertium_eo_en_eo_en_antaux_t2x.class;
         }else if(txFile.getName().contains("eo-en.t2x")){

@@ -17,22 +17,21 @@ package org.apertium.transfer;
  * 02111-1307, USA.
  */
 
-import org.apertium.CommandLineInterface;
 import static org.apertium.utils.IOUtils.getStdinReader;
 import static org.apertium.utils.IOUtils.getStdoutWriter;
 import static org.apertium.utils.IOUtils.openInFileReader;
 import static org.apertium.utils.IOUtils.openOutFileWriter;
-import static org.apertium.utils.IOUtils.openFile;
 
-import org.apertium.lttoolbox.*;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
+
+import org.apertium.CommandLineInterface;
+import org.apertium.lttoolbox.Getopt;
 import org.apertium.lttoolbox.process.FSTProcessor;
-import java.io.*;
-
 import org.apertium.lttoolbox.process.State;
-import org.apertium.transfer.generated.apertium_eo_en_en_eo_t1x;
 import org.apertium.transfer.generated.apertium_eo_en_eo_en_t1x;
 
-// Use GNU Getopt
 
 class MyGetOpt extends Getopt {
 
@@ -81,7 +80,6 @@ public class ApertiumTransfer {
         doMain(argv, null, null);
     }
 
-    @SuppressWarnings("unchecked")
     public static void doMain(String[] argv, Reader input, Writer output)
             throws IOException, InstantiationException, IllegalAccessException,
             ClassNotFoundException {
@@ -167,14 +165,14 @@ public class ApertiumTransfer {
              * expected is:  apertium-transfer-j  eo-en.t1x.class                  eo-en.t1x.bin  eo-en.autobil.bin
              * see also http://wiki.apertium.org/wiki/Bytecode_for_transfer
              */
-            String tRulesOrClassString = argv[optind + 1];
+//            String tRulesOrClassString = argv[optind + 1];
             String preProc = argv[optind + 2];
             String bilTrans = null;
             if(useBD) { bilTrans = argv[optind + 3]; }
 
-            File txOrClassFile = openFile(tRulesOrClassString);
-            File binFile = openFile(preProc);
-            Class tRulesClass = apertium_eo_en_eo_en_t1x.class;//TransferClassLoader.loadTxClass(txOrClassFile, binFile);
+//            File txOrClassFile = openFile(tRulesOrClassString);
+//            File binFile = openFile(preProc);
+            Class<apertium_eo_en_eo_en_t1x> tRulesClass = apertium_eo_en_eo_en_t1x.class;//TransferClassLoader.loadTxClass(txOrClassFile, binFile);
 
             t.read(tRulesClass, preProc, bilTrans);
             if (Transfer.DEBUG)

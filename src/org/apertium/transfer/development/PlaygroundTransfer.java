@@ -18,7 +18,6 @@ public class PlaygroundTransfer {
 
 
     public static void main(String[] args) throws Exception {
-      new org.apertium.transfer.generated.apertium_eo_en_en_eo_t1x();
       Transfer t = new Transfer();
       String dir = "/home/j/esperanto/apertium/apertium-eo-en/";
       //t.read(dir+"apertium-eo-en.en-eo.t1x", dir+"en-eo.t1x.bin", dir+"en-eo.autobil.bin");
